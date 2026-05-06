@@ -1,0 +1,257 @@
+/* ──────────────────────────────────────────────────────────────────
+   Trend Hound — Editorial Monochrome Design System
+   Operator tool aesthetic. Bloomberg × Linear × Stripe.
+   PURE GRAYSCALE. Color is semantic, NEVER decorative.
+   Two semantic colors only: profit-green, loss-red.
+   ────────────────────────────────────────────────────────────────── */
+
+/* Self-hosted fonts (matches Figma source). Path is relative to this
+   file at the project root; references from nested folders resolve
+   correctly because the URL is resolved against this stylesheet. */
+@font-face {
+  font-family: "Outfit";
+  src: url("fonts/Outfit-Regular.ttf") format("truetype");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Outfit";
+  src: url("fonts/Outfit-Medium.ttf") format("truetype");
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Outfit";
+  src: url("fonts/Outfit-SemiBold.ttf") format("truetype");
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Outfit";
+  src: url("fonts/Outfit-Bold.ttf") format("truetype");
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("fonts/Poppins-Regular.ttf") format("truetype");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("fonts/Poppins-Medium.ttf") format("truetype");
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("fonts/Poppins-SemiBold.ttf") format("truetype");
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("fonts/Poppins-Bold.ttf") format("truetype");
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Audiowide";
+  src: url("fonts/Audiowide-Regular.ttf") format("truetype");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Audiowide";
+  src: url("fonts/Audiowide-Regular.ttf") format("truetype");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+
+:root {
+  /* ── Surfaces ─────────────────────────────────────────────── */
+  --th-bg:           #0a0a0a;
+  --th-surface-1:    #111111;
+  --th-surface-2:    #161616;
+  --th-surface-3:    #1c1c1c;
+
+  /* ── Borders ──────────────────────────────────────────────── */
+  --th-border:       #1f1f1f;
+  --th-border-strong:#2a2a2a;
+  --th-border-faint: #161616;
+
+  /* ── Text ─────────────────────────────────────────────────── */
+  --th-fg:           #ffffff;
+  --th-fg-2:         #a8a8a8;
+  --th-fg-3:         #666666;
+  --th-fg-4:         #444444;
+
+  /* ── Semantic (status only — never decoration) ────────────── */
+  --th-profit:       #4ade80;
+  --th-profit-bg:    rgba(74,222,128,0.10);
+  --th-profit-border:rgba(74,222,128,0.22);
+  --th-loss:         #ef4444;
+  --th-loss-bg:      rgba(239,68,68,0.10);
+  --th-loss-border:  rgba(239,68,68,0.22);
+
+  /* Selection / active state — pure white tint, no chroma */
+  --th-active-bg:    rgba(255,255,255,0.06);
+  --th-active-border:rgba(255,255,255,0.18);
+
+  /* ── Type scale (tight, 10–20px range) ───────────────────── */
+  --th-size-faint:    10px;  /* utility: caps labels */
+  --th-size-small:    11px;  /* utility: dense data */
+  --th-size-body:     12px;  /* body / table cells */
+  --th-size-default:  14px;  /* default UI */
+  --th-size-metric:   16px;  /* key metrics */
+  --th-size-metric-lg:18px;  /* hero metrics */
+  --th-size-title:    20px;  /* page titles (max) */
+
+  /* ── Type families ────────────────────────────────────────── */
+  --th-sans: "Outfit", -apple-system, BlinkMacSystemFont,
+             "Segoe UI", system-ui, sans-serif;
+  --th-mono: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --th-display: "Audiowide", var(--th-sans);
+
+  /* ── Weights ──────────────────────────────────────────────── */
+  --th-w-regular:  400;
+  --th-w-medium:   500;
+  --th-w-semibold: 600;
+  --th-w-bold:     700;
+
+  /* ── Letter-spacing ───────────────────────────────────────── */
+  --th-tracking-tight:  -0.01em;
+  --th-tracking-normal: 0;
+  --th-tracking-caps:   0.06em;
+
+  /* ── Spacing ──────────────────────────────────────────────── */
+  --th-space-1:   2px;
+  --th-space-2:   4px;
+  --th-space-3:   6px;
+  --th-space-4:   8px;
+  --th-space-5:  10px;
+  --th-space-6:  12px;
+  --th-space-7:  14px;
+  --th-space-8:  16px;
+  --th-space-10: 20px;
+  --th-space-12: 24px;
+
+  /* ── Radii ────────────────────────────────────────────────── */
+  --th-radius-1: 2px;
+  --th-radius-2: 4px;
+  --th-radius-3: 6px;
+  --th-radius-4: 8px;
+
+  --th-shadow-modal: 0 24px 48px -12px rgba(0,0,0,0.6),
+                     0 0 0 1px var(--th-border-strong);
+
+  --th-sidebar-w: 240px;
+  --th-row-h:     32px;
+  --th-control-h: 32px;
+}
+
+html, body {
+  background: var(--th-bg);
+  color: var(--th-fg);
+  font-family: var(--th-sans);
+  font-size: var(--th-size-default);
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body, table, .num, [data-num] {
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+.th-title    { font-size: var(--th-size-title); font-weight: var(--th-w-semibold);
+               letter-spacing: var(--th-tracking-tight); line-height: 1.15; }
+.th-metric   { font-size: var(--th-size-metric); font-weight: var(--th-w-medium);
+               font-variant-numeric: tabular-nums lining-nums; line-height: 1.15; }
+.th-default  { font-size: var(--th-size-default); }
+.th-body     { font-size: var(--th-size-body); color: var(--th-fg-2); }
+.th-small    { font-size: var(--th-size-small); color: var(--th-fg-2); }
+.th-faint    { font-size: var(--th-size-faint); color: var(--th-fg-3);
+               text-transform: uppercase; letter-spacing: var(--th-tracking-caps); }
+.th-mono     { font-family: var(--th-mono); font-variant-numeric: tabular-nums; }
+.th-display  { font-family: var(--th-display); font-weight: var(--th-w-bold);
+               letter-spacing: 0.08em; text-transform: uppercase; }
+
+.th-profit-text { color: var(--th-profit); font-variant-numeric: tabular-nums; }
+.th-loss-text   { color: var(--th-loss);   font-variant-numeric: tabular-nums; }
+
+.th-pill {
+  display: inline-flex; align-items: center; gap: 4px;
+  height: 18px; padding: 0 6px;
+  font-size: var(--th-size-faint); font-weight: var(--th-w-medium);
+  text-transform: uppercase; letter-spacing: var(--th-tracking-caps);
+  border-radius: var(--th-radius-1);
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.th-pill--profit { background: var(--th-profit-bg); color: var(--th-profit); }
+.th-pill--loss   { background: var(--th-loss-bg);   color: var(--th-loss); }
+.th-pill--neutral{ background: rgba(255,255,255,0.04); color: var(--th-fg-2); }
+.th-pill--active { background: var(--th-active-bg); color: var(--th-fg); }
+
+.th-card {
+  background: var(--th-surface-1);
+  border: 1px solid var(--th-border);
+  border-radius: var(--th-radius-3);
+  padding: var(--th-space-7);
+}
+
+.th-strip {
+  display: flex;
+  background: var(--th-surface-1);
+  border: 1px solid var(--th-border);
+  border-radius: var(--th-radius-3);
+  overflow: hidden;
+}
+.th-strip > .th-cell {
+  flex: 1; min-width: 0; padding: 12px 14px;
+  border-right: 1px solid var(--th-border);
+  display: flex; flex-direction: column; gap: 4px;
+}
+.th-strip > .th-cell:last-child { border-right: 0; }
+
+.th-table { width: 100%; border-collapse: collapse; font-size: var(--th-size-body); }
+.th-table th, .th-table td {
+  padding: 8px 10px; text-align: left;
+  border-bottom: 1px solid var(--th-border);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+.th-table th {
+  font-size: var(--th-size-faint); font-weight: var(--th-w-medium);
+  color: var(--th-fg-3); text-transform: uppercase;
+  letter-spacing: var(--th-tracking-caps);
+}
+.th-table td.num, .th-table th.num { text-align: right; }
+.th-table tr:hover td { background: var(--th-surface-2); }
+
+.th-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  height: var(--th-control-h); padding: 0 12px;
+  font-family: inherit; font-size: var(--th-size-default);
+  font-weight: var(--th-w-medium);
+  background: transparent; color: var(--th-fg);
+  border: 1px solid var(--th-border-strong);
+  border-radius: 8px;
+  cursor: pointer; user-select: none;
+  transition: background 80ms ease, border-color 80ms ease;
+}
+.th-btn:hover { background: var(--th-surface-2); border-color: #333; }
+.th-btn:active { background: var(--th-surface-3); }
+.th-btn--primary { background: var(--th-fg); color: var(--th-bg); border-color: var(--th-fg); }
+.th-btn--primary:hover { background: #e8e8e8; border-color: #e8e8e8; }
+.th-btn--ghost { border-color: transparent; }
+.th-btn--ghost:hover { background: var(--th-surface-2); border-color: var(--th-border); }
+.th-btn--profit { color: var(--th-profit); border-color: var(--th-profit-border); background: var(--th-profit-bg); }
+.th-btn--loss   { color: var(--th-loss);   border-color: var(--th-loss-border);   background: var(--th-loss-bg); }
+.th-btn--sm { height: 24px; padding: 0 8px; font-size: var(--th-size-body); border-radius: 6px; }
+
+.th-input {
+  height: var(--th-control-h); padding: 0 10px;
+  font-family: inherit; font-size: var(--th-size-default);
+  background: var(--th-bg); color: var(--th-fg);
+  border: 1px solid var(--th-border-strong);
+  border-radius: var(--th-radius-2);
+  outline: none;
+  font-variant-numeric: tabular-nums;
+}
+.th-input::placeholder { color: var(--th-fg-3); }
+.th-input:focus { border-color: #3a3a3a; background: var(--th-surface-1); }
+
+.th-divider     { height: 1px; background: var(--th-border); }
+.th-divider-v   { width: 1px;  background: var(--th-border); align-self: stretch; }
